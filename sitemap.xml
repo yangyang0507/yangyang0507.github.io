@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dyang.top/2026/03/09/starepo-activate-github-stars-with-ai/</loc>
+    
+    <lastmod>2026-03-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dyang.top/2019/11/15/use-minikube-install-k8s-on-ubuntu18-04/</loc>
     
     <lastmod>2022-10-31</lastmod>
@@ -40,29 +49,64 @@
 
   <url>
     <loc>http://dyang.top/</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>http://dyang.top/tags/GitHub/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://dyang.top/tags/AI/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://dyang.top/tags/CLI/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://dyang.top/tags/MCP/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://dyang.top/tags/%E6%90%9C%E7%B4%A2/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://dyang.top/tags/Kubernetes/</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://dyang.top/tags/Minikube/</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://dyang.top/tags/Ubuntu/</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -70,8 +114,15 @@
 
   
   <url>
+    <loc>http://dyang.top/categories/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://dyang.top/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E4%BA%8B/</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

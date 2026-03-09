@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dyang.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="你有没有这种经历： 明明记得 star 过一个很好用的工具，但真正需要用的时候却怎么都找不到。翻了半天收藏夹，全是一年前随手点的项目，名字完全对不上号。 或者更绝一点 —— 打开 GitHub，面对密密麻麻的数千个 star，脑子一片空白。 这不是你的记性不好，而是 GitHub 的 star 功能从来就不是为 “找回” 设计的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Star 了三年，全白 Star 了？我用 AI 把 GitHub 收藏夹盘活了">
+<meta property="og:url" content="http://dyang.top/2026/03/09/starepo-activate-github-stars-with-ai/index.html">
+<meta property="og:site_name" content="D.Yang&#39;s Blog">
+<meta property="og:description" content="你有没有这种经历： 明明记得 star 过一个很好用的工具，但真正需要用的时候却怎么都找不到。翻了半天收藏夹，全是一年前随手点的项目，名字完全对不上号。 或者更绝一点 —— 打开 GitHub，面对密密麻麻的数千个 star，脑子一片空白。 这不是你的记性不好，而是 GitHub 的 star 功能从来就不是为 “找回” 设计的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-09T14:19:57.000Z">
+<meta property="article:modified_time" content="2026-03-09T14:19:57.000Z">
+<meta property="article:author" content="D.Yang">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="CLI">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="搜索">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://dyang.top/2026/03/09/starepo-activate-github-stars-with-ai/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://dyang.top/2026/03/09/starepo-activate-github-stars-with-ai/","path":"2026/03/09/starepo-activate-github-stars-with-ai/","title":"Star 了三年，全白 Star 了？我用 AI 把 GitHub 收藏夹盘活了"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Star 了三年，全白 Star 了？我用 AI 把 GitHub 收藏夹盘活了 | D.Yang's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4R9XB14W0"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-J4R9XB14W0","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?f37a8b8ac624bc29f64349b003542379"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="D.Yang's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">D.Yang's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">To Be A Great Coder</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E5%9C%A8%E5%93%AA%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">问题出在哪？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">我做了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%B8%8A%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E5%88%B0%E7%9A%84"><span class="nav-number">3.</span> <span class="nav-text">技术上是怎么做到的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E8%B5%B7%E6%9D%A5%E6%9C%89%E5%A4%9A%E7%AE%80%E5%8D%95"><span class="nav-number">4.</span> <span class="nav-text">用起来有多简单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-Skill-%E9%9B%86%E6%88%90%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">如何通过 Skill 集成？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87-MCP-%E9%9B%86%E6%88%90%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">如何通过 MCP 集成？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">7.</span> <span class="nav-text">最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="D.Yang"
+      src="/avatar.webp">
+  <p class="site-author-name" itemprop="name">D.Yang</p>
+  <div class="site-description" itemprop="description">Art is long, but life is short!</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yangyang0507" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yangyang0507" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:koyangslash@gmail.com" title="E-Mail → mailto:koyangslash@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dyang.top/2026/03/09/starepo-activate-github-stars-with-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar.webp">
+      <meta itemprop="name" content="D.Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="D.Yang's Blog">
+      <meta itemprop="description" content="Art is long, but life is short!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Star 了三年，全白 Star 了？我用 AI 把 GitHub 收藏夹盘活了 | D.Yang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Star 了三年，全白 Star 了？我用 AI 把 GitHub 收藏夹盘活了
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-09 22:19:57" itemprop="dateCreated datePublished" datetime="2026-03-09T22:19:57+08:00">2026-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">工具推荐</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>你有没有这种经历：</p>
+<p>明明记得 star 过一个很好用的工具，但真正需要用的时候却怎么都找不到。翻了半天收藏夹，全是一年前随手点的项目，名字完全对不上号。</p>
+<p>或者更绝一点 —— 打开 GitHub，面对密密麻麻的数千个 star，脑子一片空白。</p>
+<p><strong>这不是你的记性不好，而是 GitHub 的 star 功能从来就不是为 “找回” 设计的。</strong></p>
+<span id="more"></span>
+
+<hr>
+<h2 id="问题出在哪？"><a href="#问题出在哪？" class="headerlink" title="问题出在哪？"></a>问题出在哪？</h2><p>GitHub 的 star 本质上更像一个书签功能，它只能告诉你 “我收藏过这个”，却没法帮你回忆 “我为什么收藏它”。</p>
+<p>官方提供的筛选能力也比较有限：按语言、按时间排序，或者手动加 List 分类。但现实是，谁会在 star 的那一刻认真做归档整理呢？</p>
+<p>于是就很容易出现这些场景：</p>
+<ul>
+<li>想找一个 “用 Rust 写的高性能 key-value 存储”，只能靠肉眼扫描</li>
+<li>想起一个项目 “好像是做 React 状态管理的，但不是 Redux”，却完全没有线索</li>
+<li>翻到两年前 star 的项目时，已经不记得它到底是干什么的了</li>
+</ul>
+<hr>
+<h2 id="我做了什么"><a href="#我做了什么" class="headerlink" title="我做了什么"></a>我做了什么</h2><p>最近我写了一个叫 <strong>starepo</strong> 的命令行工具，专门解决这个问题。</p>
+<p>它的核心思路很简单：<strong>把你所有 star 过的仓库拉到本地做向量化，然后通过语义搜索来检索它们。</strong></p>
+<p>换句话说，你可以直接像问一个 “记性很好” 的朋友一样，用自然语言去找项目：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">starepo search <span class="string">"用 Rust 写的高性能 key-value 存储"</span></span><br><span class="line">starepo search <span class="string">"不需要服务器的 React 状态管理"</span></span><br><span class="line">starepo search <span class="string">"命令行的 AI 编程助手"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>它会综合语义理解和全文检索，把最相关的结果排在前面。</p>
+<p><strong>更重要的是，整个过程几乎零配置，也不需要任何 API Key。</strong> 不用 OpenAI Embedding API，不用额外接入某个 LLM 服务，向量模型完全本地运行，GitHub 授权完成后就能直接使用。</p>
+<hr>
+<h2 id="技术上是怎么做到的"><a href="#技术上是怎么做到的" class="headerlink" title="技术上是怎么做到的"></a>技术上是怎么做到的</h2><p>整个方案不依赖云服务，<strong>完全在本地运行</strong>。</p>
+<p><strong>向量嵌入</strong>使用的是 <a target="_blank" rel="noopener" href="https://huggingface.co/BAAI/bge-m3">Xenova/bge-m3</a>，这是一个支持多语言的开源模型，1024 维，首次运行大约会下载 23MB 的模型文件，后续即可离线使用。</p>
+<p><strong>存储</strong>使用的是 <a target="_blank" rel="noopener" href="https://github.com/lancedb/lancedb">LanceDB</a>，这是一个专门为向量搜索设计的本地数据库。它的优点之一是无需复杂编译，直接通过 npm 安装即可使用。</p>
+<p><strong>搜索策略</strong>则分成三层：</p>
+<ol>
+<li><strong>关键词搜索（FTS）</strong>：基于倒排索引，速度最快，适合精确词语匹配</li>
+<li><strong>向量搜索</strong>：把查询语句也转成向量，用余弦相似度找最接近的仓库</li>
+<li><strong>混合搜索</strong>：合并两路结果、去重，并按相关性重新排序</li>
+</ol>
+<p>这样一来，无论你记得的是关键词，还是只记得一个大概用途，都能更容易把目标项目找出来。</p>
+<hr>
+<h2 id="用起来有多简单"><a href="#用起来有多简单" class="headerlink" title="用起来有多简单"></a>用起来有多简单</h2><p>安装只需要一行命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g starepo</span><br><span class="line"><span class="comment"># 或者不安装，直接用 npx</span></span><br><span class="line">npx starepo &lt;命令&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第一次使用主要分三步：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. GitHub 授权（Device Flow，不需要手动填 Token）</span></span><br><span class="line">starepo auth</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 同步所有 star 并生成向量（一次性操作）</span></span><br><span class="line">starepo <span class="built_in">sync</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 开始搜索</span></span><br><span class="line">starepo search <span class="string">"你想找的东西"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>同步完成之后，后续搜索基本就是即时响应。</p>
+<hr>
+<h2 id="如何通过-Skill-集成？"><a href="#如何通过-Skill-集成？" class="headerlink" title="如何通过 Skill 集成？"></a>如何通过 Skill 集成？</h2><p>如果你正在使用 Claude Code，或者其他支持 <a target="_blank" rel="noopener" href="https://github.com/vercel-labs/skills">skills.sh</a> 的 AI 编程工具，还可以一键安装 starepo skill：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx skills add yangyang0507/starepo</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装之后，你甚至不需要自己记命令。直接告诉 AI Agent：</p>
+<blockquote>
+<p>帮我在 star 里找一个 XXX</p>
+</blockquote>
+<p>它就可以自动调用 starepo 帮你完成检索。整个过程不需要切窗口，也不需要手动去 GitHub 翻收藏夹。</p>
+<hr>
+<h2 id="如何通过-MCP-集成？"><a href="#如何通过-MCP-集成？" class="headerlink" title="如何通过 MCP 集成？"></a>如何通过 MCP 集成？</h2><p>starepo 还实现了 <strong>MCP 服务器</strong>，可以接入 Claude Desktop、Cursor 这类 AI 工具。</p>
+<p>配置也非常简单，几行 JSON 就够了：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"mcpServers"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"starepo"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"npx"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"starepo"</span><span class="punctuation">,</span> <span class="string">"serve"</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>完成配置后，你可以直接在对话框里问 Claude：</p>
+<blockquote>
+<p>帮我找一下我 star 过的、和 LLM 推理加速相关的项目</p>
+</blockquote>
+<p>Claude 会调用 starepo 提供的工具，直接把结果返回给你。这样一来，GitHub star 不再只是一个静态收藏夹，而是变成了一个可搜索、可对话的知识库。</p>
+<hr>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>数年的 star，不应该就这样沉在收藏夹里吃灰。</p>
+<p>项目已经开源，感兴趣的话可以看看：</p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/yangyang0507/starepo">https://github.com/yangyang0507/starepo</a></strong></p>
+<p>如果你觉得它有用，也欢迎顺手点个 star—— 这一次，你应该不会再忘记它放在哪了。</p>
+<hr>
+<p><em>本文涉及的所有代码和数据均在本地运行，不会上传任何个人数据。</em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/CLI/" rel="tag"># CLI</a>
+              <a href="/tags/MCP/" rel="tag"># MCP</a>
+              <a href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag"># 搜索</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/15/use-minikube-install-k8s-on-ubuntu18-04/" rel="prev" title="在 Ubuntu 18.04 上通过 Minikube 安装 Kubernetes">
+                  <i class="fa fa-chevron-left"></i> 在 Ubuntu 18.04 上通过 Minikube 安装 Kubernetes
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">D.Yang</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">2k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">7 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div><p>Hosted by <a target="_blank" rel="noopener" href="https://pages.github.com" style="font-weight:bold">Github Pages</a></p>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/yangyang0507" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
